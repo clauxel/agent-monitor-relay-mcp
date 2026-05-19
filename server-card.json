@@ -1,0 +1,244 @@
+{
+  "name": "agentmonitorrelay",
+  "title": "Agent Monitor Relay",
+  "description": "Record agent runs, detect failures, replay tool-call incidents, and publish client-ready SLA status from one paid remote MCP.",
+  "version": "1.0.0",
+  "websiteUrl": "https://agentmonitorrelay.clauxel.com/",
+  "documentationUrl": "https://agentmonitorrelay.clauxel.com/mcp/",
+  "endpointUrl": "https://agentmonitorrelay.clauxel.com/mcp",
+  "transport": "streamable-http",
+  "authentication": {
+    "type": "bearer",
+    "required": true,
+    "header": "Authorization",
+    "format": "Bearer <paid-token>"
+  },
+  "paidAccess": {
+    "required": true,
+    "checkoutUrl": "https://agentmonitorrelay.clauxel.com/api/agent-checkout",
+    "tokenStatusUrl": "https://agentmonitorrelay.clauxel.com/api/mcp-token/status",
+    "tokenClaimUrl": "https://agentmonitorrelay.clauxel.com/api/mcp-token/claim",
+    "defaultPlan": "ops",
+    "pricing": [
+      {
+        "id": "starter",
+        "name": "Starter",
+        "monthlyUsd": 59
+      },
+      {
+        "id": "ops",
+        "name": "Ops",
+        "monthlyUsd": 199
+      },
+      {
+        "id": "scale",
+        "name": "Scale",
+        "monthlyUsd": 499
+      }
+    ]
+  },
+  "tools": [
+    {
+      "name": "record_agent_run",
+      "description": "Agent Monitor Relay record agent run",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "sample": {
+            "type": "string",
+            "description": "Workflow sample, schema, policy fixture, or agent output."
+          },
+          "context": {
+            "type": "string",
+            "description": "Optional review context."
+          }
+        },
+        "required": [
+          "sample"
+        ]
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "verdict": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          },
+          "receipt_id": {
+            "type": "string"
+          },
+          "usage_units": {
+            "type": "integer"
+          },
+          "next_action": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "name": "detect_agent_failure",
+      "description": "Agent Monitor Relay detect agent failure",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "sample": {
+            "type": "string",
+            "description": "Workflow sample, schema, policy fixture, or agent output."
+          },
+          "context": {
+            "type": "string",
+            "description": "Optional review context."
+          }
+        },
+        "required": [
+          "sample"
+        ]
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "verdict": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          },
+          "receipt_id": {
+            "type": "string"
+          },
+          "usage_units": {
+            "type": "integer"
+          },
+          "next_action": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "name": "replay_tool_call_incident",
+      "description": "Agent Monitor Relay replay tool call incident",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "sample": {
+            "type": "string",
+            "description": "Workflow sample, schema, policy fixture, or agent output."
+          },
+          "context": {
+            "type": "string",
+            "description": "Optional review context."
+          }
+        },
+        "required": [
+          "sample"
+        ]
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "verdict": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          },
+          "receipt_id": {
+            "type": "string"
+          },
+          "usage_units": {
+            "type": "integer"
+          },
+          "next_action": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "name": "issue_sla_receipt",
+      "description": "Agent Monitor Relay issue sla receipt",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "sample": {
+            "type": "string",
+            "description": "Workflow sample, schema, policy fixture, or agent output."
+          },
+          "context": {
+            "type": "string",
+            "description": "Optional review context."
+          }
+        },
+        "required": [
+          "sample"
+        ]
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "verdict": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          },
+          "receipt_id": {
+            "type": "string"
+          },
+          "usage_units": {
+            "type": "integer"
+          },
+          "next_action": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "name": "export_client_status",
+      "description": "Agent Monitor Relay export client status",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "sample": {
+            "type": "string",
+            "description": "Workflow sample, schema, policy fixture, or agent output."
+          },
+          "context": {
+            "type": "string",
+            "description": "Optional review context."
+          }
+        },
+        "required": [
+          "sample"
+        ]
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "verdict": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          },
+          "receipt_id": {
+            "type": "string"
+          },
+          "usage_units": {
+            "type": "integer"
+          },
+          "next_action": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  ],
+  "inputOutputSummary": "Each tool accepts structured workflow evidence and returns verdict, reason, receipt_id, usage_units, and next_action JSON.",
+  "supportEmail": "support@aigeamy.com"
+}
