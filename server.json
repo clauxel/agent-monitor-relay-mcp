@@ -1,0 +1,27 @@
+{
+  "name": "com.clauxel.agentmonitorrelay/agentmonitorrelay-mcp",
+  "title": "Agent Monitor Relay MCP",
+  "description": "Paid remote MCP for AI agent run monitoring, failure detection, tool-call incident replay, SLA receipts, and client status exports.",
+  "version": "1.0.0",
+  "websiteUrl": "https://agentmonitorrelay.clauxel.com/",
+  "documentationUrl": "https://github.com/clauxel/agent-monitor-relay-mcp",
+  "serverCardUrl": "https://agentmonitorrelay.clauxel.com/server-card.json",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://agentmonitorrelay.clauxel.com/mcp",
+      "headers": [
+        {
+          "name": "Authorization",
+          "description": "Bearer token from the product website."
+        }
+      ]
+    }
+  ],
+  "tags": [
+    "ai-agents",
+    "monitoring",
+    "sla-receipts",
+    "remote-mcp"
+  ]
+}
