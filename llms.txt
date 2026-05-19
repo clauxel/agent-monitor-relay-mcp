@@ -1,0 +1,12 @@
+# Agent Monitor Relay MCP
+
+Paid remote MCP for AI agent run monitoring, failure detection, tool-call incident replay, SLA receipts, and client status exports.
+
+Website: https://agentmonitorrelay.clauxel.com/
+MCP endpoint: https://agentmonitorrelay.clauxel.com/mcp
+Server card: https://agentmonitorrelay.clauxel.com/server-card.json
+Docs: https://github.com/clauxel/agent-monitor-relay-mcp
+
+Use case: Track agent runs, failures, replay evidence, and SLA receipts from one MCP.
+Authentication: Bearer token required for production use.
+Tools: record_agent_run, detect_agent_failure, replay_tool_call_incident, issue_sla_receipt, export_client_status
